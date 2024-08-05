@@ -14,7 +14,7 @@ Verificar um número de telefone que será usado como remetente das mensagens.
 Configurar suas credenciais no código dos scripts ou em variáveis de ambiente para garantir a segurança.
 
 
-🚀 **Instalação
+🚀 **Instalação**
 ```
 git clone https://github.com/AnubisChacal/BKP_to_Whatsap.git
 cd nome-do-projeto
