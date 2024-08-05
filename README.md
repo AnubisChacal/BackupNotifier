@@ -1,6 +1,6 @@
 ###BKP_to_Whatsapp
 
-📚 **Sobre***
+📚 **Sobre**
 
 Este projeto consiste em um shell script que realiza o backup de um diretório, criando um arquivo comprimido dos dados com a data e hora atuais. O arquivo de backup é salvo em um diretório de destino especificado. Se o backup for bem-sucedido, um script Python (sucesso_backup.py) é executado para notificar o sucesso via WhatsApp. Em caso de falha, o erro é registrado em um log, e outro script Python (falha_backup.py) é executado para enviar uma notificação de falha. Além disso, backups antigos com mais de 2 dias são removidos automaticamente para liberar espaço em disco.
 
