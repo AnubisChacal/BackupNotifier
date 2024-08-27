@@ -1,22 +1,51 @@
-# 📦 BKP_to_Whatsapp 📦
+# 🔔 BackupNotifier
 
-### 📚 **Sobre**
+BackupNotifier é um sistema automatizado que combina scripts Bash e Python para realizar backups de diretórios importantes e enviar notificações via WhatsApp utilizando a API do Twilio. O projeto garante que você esteja sempre informado sobre o status dos seus backups, seja em caso de sucesso ou falha.
 
-Este projeto consiste em um shell script que realiza o backup de um diretório, criando um arquivo comprimido dos dados com a data e hora atuais. O arquivo de backup é salvo em um diretório de destino especificado. Se o backup for bem-sucedido, um script Python (sucesso_backup.py) é executado para notificar o sucesso via WhatsApp. Em caso de falha, o erro é registrado em um log, e outro script Python (falha_backup.py) é executado para enviar uma notificação de falha. Além disso, backups antigos com mais de 2 dias são removidos automaticamente para liberar espaço em disco.
+## 🛠️ Funcionalidades
 
-📜 **Twilio**
+- **Backup Automatizado**: Criação de backups comprimidos (`.tar.gz`) de diretórios especificados, armazenando-os em um local seguro.
+- **Notificações via WhatsApp**: Envio de mensagens via WhatsApp para notificar o sucesso ou falha na criação dos backups.
+- **Logs de Erro**: Geração de logs detalhados em caso de falha, com informações específicas para facilitar a resolução do problema.
+- **Gerenciamento de Backups Antigos**: Remoção automática de backups antigos, mantendo o sistema de armazenamento organizado.
 
-Para utilizar os scripts Python de notificação via WhatsApp, é necessário criar uma conta no Twilio. O Twilio é uma plataforma de comunicação em nuvem que permite enviar mensagens de texto, voz e multimídia. Você pode criar uma conta gratuita no site oficial do Twilio e obter as credenciais necessárias (Account SID e Auth Token) para configurar as notificações em seus scripts.
+## 📂 Estrutura do Projeto
 
-Após a criação da conta, você precisará:
+- **`BKP_to_Whatsapp.sh`** 🚀: Script Bash principal que realiza o backup, verifica o status do processo e chama os scripts Python apropriados para enviar notificações.
+- **`sucesso_backup.py`** ✅: Script Python que envia uma mensagem de sucesso via WhatsApp usando a API do Twilio.
+- **`falha_backup.py`** ❌: Script Python que envia uma mensagem de falha via WhatsApp usando a API do Twilio, incluindo o nome do arquivo de log gerado.
+- **`/backup`** 🗄️: Diretório onde os backups são armazenados.
+- **`/erro_log`** 🛠️: Diretório onde os logs de erro são armazenados.
 
-Verificar um número de telefone que será usado como remetente das mensagens.
-Configurar suas credenciais no código dos scripts ou em variáveis de ambiente para garantir a segurança.
+## 🚀 Como Usar
 
+1. **Clone o repositório**:
+    ```bash
+    git clone https://github.com/AnubisChacal/BackupNotifier.git
+    ```
 
-🚀 **Instalação**
-```
-git clone https://github.com/AnubisChacal/BKP_to_Whatsap.git
-cd nome-do-projeto
-pip install -r requirements.txt
-```
+2. **Configure suas credenciais do Twilio**:
+    - Substitua `account_sid` e `auth_token` pelas suas credenciais do Twilio nos arquivos `sucesso_backup.py` e `falha_backup.py`.
+
+3. **Edite os diretórios de origem e destino**:
+    - No script `BKP_to_Whatsapp.sh`, defina `SRC` para o diretório que você deseja fazer backup e `DEST` para o diretório onde o backup será armazenado.
+
+4. **Execute o script de backup**:
+    ```bash
+    bash BKP_to_Whatsapp.sh
+    ```
+
+5. **Receba notificações**:
+   - Você receberá uma mensagem no WhatsApp informando o sucesso ou falha do backup.
+
+## 🛠️ Requisitos
+
+- **Bash** (para execução de scripts)
+- **Python 3.x**
+- **Biblioteca `twilio` para Python** (instale com `pip install twilio`)
+- **Twilio Account** (para enviar mensagens via WhatsApp)
+
+## 🔧 Personalização
+
+- **Configurações de Backup**: Ajuste o script `BKP_to_Whatsapp.sh` para atender às suas necessidades de backup, como o diretório de origem e o tempo de retenção dos backups.
+- **Notificações**: Personalize as mensagens enviadas nos scripts Python (`sucesso_backup.py` e `falha_backup.py`) conforme necessário.
